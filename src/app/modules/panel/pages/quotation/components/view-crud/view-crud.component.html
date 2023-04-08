@@ -1,0 +1,389 @@
+<ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="large"
+    color="#fff"
+    type="ball-scale-multiple"
+    [fullScreen]="true"
+>
+    <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
+<div class="grid">
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+
+        <div class="card p-fluid" >
+            <p>Cliente</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="customer"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('customer', dataForm) }">
+                        <label>Cliente</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('customer', dataForm)">
+                        Favor de ingresar cliente.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="plant_user"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('plant_user', dataForm) }">
+                        <label>Usuario en planta</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('plant_user', dataForm)">
+                        Favor de ingresar el usuario en planta.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="plant"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('plant', dataForm) }">
+                        <label>Planta</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('plant', dataForm)">
+                        Favor de ingresar la Planta.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="area"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('area', dataForm) }">
+                        <label>Área</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('area', dataForm)">
+                        Favor de ingresar la área.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="customer_reference"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('customer_reference', dataForm) }">
+                        <label>Referencia</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('customer_reference', dataForm)">
+                        Favor de ingresar la referencia.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+        <div class="card p-fluid" >
+            <p>Proyecto</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="project_types" [showEmptyMessage]="true" [suggestions]="filteredProjectTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterProjectType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('project_types', dataForm) }">
+                         </p-autoComplete>
+                         <label>Tipo Proyecto</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('project_types', dataForm)">
+                        Favor de ingresar el tipo proyecto.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="design_types" [showEmptyMessage]="true" [suggestions]="filteredDesignTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterDesignType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('design_types', dataForm) }">
+                          </p-autoComplete>
+                         <label>Tipo Diseño</label>
+                     </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('design_types', dataForm)">
+                        Favor de ingresar el tipo diseño.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+
+        <div class="card p-fluid" >
+            <p>Eléctricos</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                   <span class="p-float-label">
+                         <p-autoComplete formControlName="electric_types" [showEmptyMessage]="true" [suggestions]="filteredElectricTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterElectricType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('electric_types', dataForm) }">
+                        </p-autoComplete>
+                        <label>Tipo Eléctrico</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('electric_types', dataForm)">
+                        Favor de ingresar el tipo eléctrico.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="plc_mark"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('plc_mark', dataForm) }">
+                        <label>Marca plc</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('plc_mark', dataForm)">
+                        Favor de ingresar la marca plc.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="entrances_and_exits"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('entrances_and_exits', dataForm) }">
+                        <label>Entrada y Salida</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('entrances_and_exits', dataForm)">
+                        Favor de ingresar la entrada y salida.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+        <div class="card p-fluid" >
+            <p>Energía</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="energy_types" [showEmptyMessage]="true" [suggestions]="filteredEnergyTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterEnergyType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('energy_types', dataForm) }">
+                          </p-autoComplete>
+                         <label>Tipo Energia</label>
+                     </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('energy_types', dataForm)">
+                        Favor de ingresar el tipo energía.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                     <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="amperage"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('amperage', dataForm) }">
+                        <label>Amperaje</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('amperage', dataForm)">
+                        Favor de ingresar el amperaje.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="voltage"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('voltage', dataForm) }">
+                        <label>Voltaje</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('voltage', dataForm)">
+                        Favor de ingresar el voltaje.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                     <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="psi_mpa"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('psi_mpa', dataForm) }">
+                        <label>Psi/Mpa</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('psi_mpa', dataForm)">
+                        Favor de ingresar el Psi/Mpa.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+        <div class="card p-fluid" >
+            <p>Pintura / Tipo Estandar y Manufactura</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="paint_code"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('paint_code', dataForm) }">
+                        <label>Código Pintura</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('paint_code', dataForm)">
+                        Favor de ingresar el código pintura.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="standard_types" [showEmptyMessage]="true" [suggestions]="filteredStandardTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterStandardType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('standard_types', dataForm) }">
+                          </p-autoComplete>
+                        <label>Tipo Estandar</label>
+                     </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('standard_types', dataForm)">
+                        Favor de ingresar el tipo estandar.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                    <span class="p-input-icon-left p-float-label">
+                        <i class="pi pi-pencil"></i>
+                        <input pInputText type="text" formControlName="paint_mark"
+                               [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('paint_mark', dataForm) }">
+                        <label>Marca Pintura</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('paint_mark', dataForm)">
+                        Favor de ingresar la marca pintura.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="manufacture_types" [showEmptyMessage]="true" [suggestions]="filteredManufactureTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterManufactureType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('manufacture_types', dataForm) }">
+                          </p-autoComplete>
+                        <label>Tipo Manufactura</label>
+                     </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('manufacture_types', dataForm)">
+                        Favor de ingresar el tipo manufactura.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-6" [formGroup]="dataForm">
+        <div class="card p-fluid" >
+            <p>Trabajo</p>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6">
+                     <span class="p-float-label">
+                         <p-autoComplete formControlName="work_height_types" [showEmptyMessage]="true" [suggestions]="filteredWorkHeightTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterWorkHeightType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('work_height_types', dataForm) }">
+                          </p-autoComplete>
+                         <label>Trabajo en altura</label>
+                     </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('work_height_types', dataForm)">
+                        Favor de ingresar el trabajo en altura.
+                    </small>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label">
+                         <p-autoComplete formControlName="hot_work_types" [showEmptyMessage]="true" [suggestions]="filteredHotWorkTypes"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterHotWorkType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('hot_work_types', dataForm) }">
+                        </p-autoComplete>
+                        <label>Trabajo en Caliente</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('hot_work_types', dataForm)">
+                        Favor de ingresar el trabajo en caliente.
+                    </small>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                    <span class="p-float-label">
+                         <p-autoComplete formControlName="loading_equipment_types" [showEmptyMessage]="true" [suggestions]="filteredLoadingEquipment"
+                                         [dropdown]="true" [multiple]="true"
+                                         (completeMethod)="filterLoadingEquipmentType($event)" field="name" [minLength]="1" appendTo="body"
+                                         [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('loading_equipment_types', dataForm) }">
+                          </p-autoComplete>
+                        <label>Equipo de Carga</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('loading_equipment_types', dataForm)">
+                        Favor de ingresar el equipoo de carga.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-12" [formGroup]="dataForm">
+        <div class="card p-fluid" >
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-12">
+                    <span class="p-float-label">
+                        <textarea pInputTextarea formControlName="project_requirement" rows="3" cols="30" [autoResize]="true"
+                                  [ngClass]="{'ng-invalid ng-dirty': fieldInvalidForm('project_requirement', dataForm) }">
+                        </textarea>
+                        <label>Requerimiento general del proyecto...</label>
+                    </span>
+                    <small [ngStyle]="{'color': '#B00020'}" *ngIf="fieldInvalidForm('project_requirement', dataForm)">
+                        Favor de ingresar el requirimiento.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 md:col-12" [formGroup]="dataForm">
+        <div class="card" >
+            <div class="p-formgrid grid">
+                <!--<label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>-->
+                <div class="col-12 md:col-6 flex align-items-center justify-content-end">
+                    <p-button (click)="cancel()" icon="pi pi-times"
+                              label="Cancelar" type="button" styleClass="p-button p-button-rounded p-button-secondary">
+                    </p-button>
+                </div>
+                <div class="col-12 md:col-6 flex align-items-center justify-content-end">
+                    <p-button *ngIf="idQuotation === '1'" (click)="save()" [disabled]="dataForm.invalid" icon="pi pi-save"
+                              label="Guardar" type="button" styleClass="p-button p-button-rounded">
+                    </p-button>
+
+                    <p-button *ngIf="idQuotation !== '1'" (click)="update()" [disabled]="dataForm.invalid" icon="pi pi-pencil"
+                              label="Editar" type="button" styleClass="p-button p-button-rounded">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,45 @@
+<div class="login-body">
+    <div class="login-wrapper">
+        <div class="login-panel">
+            <div class="login-form" [formGroup]="loginForm">
+                <a [routerLink]="['/']" class="logo">
+                    <img src="assets/layout/images/avatar-login.png" alt="poseidon-layout" />
+                </a>
+                <h2>Shonan</h2>
+
+                <div class="grid p-fluid">
+                    <div class="col-12 md:col-12 lg:col-12">
+                          <span class="p-input-icon-left p-float-label">
+                               <i class="pi pi-pencil"></i>
+                                <input pInputText type="text" formControlName="username"
+                                       [ngClass]="{'ng-invalid ng-dirty': sharedService.fieldInvalidForm('username', loginForm) }">
+                                <label>Nombre</label>
+                          </span>
+                    </div>
+                    <div class="col-12 md:col-12 lg:col-12">
+                        <span class="p-input-icon-left p-float-label">
+                           <i class="pi pi-pencil"></i>
+                            <p-password [toggleMask]="true" formControlName="password"
+                                        styleClass="p-password p-component p-inputwrapper p-input-icon-right" >
+                                    <ng-template pTemplate="header">
+                                    <h6>Ingresar Contraseña</h6>
+                                </ng-template>
+                            </p-password>
+                            <label>Nombre</label>
+                      </span>
+                    </div>
+                </div>
+
+               <!-- <p>You don't have an account? <a href="#"> Ingresar</a></p>-->
+
+
+                <p-button (click)="login()" label="Entrar" type="button"
+                          styleClass="p-button-rounded p-button-info"
+                          [disabled]="loginForm.invalid">
+                </p-button>
+            </div>
+
+           <!-- <p>A problem? <a href="#">Click here</a> and let us help you.</p>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,323 @@
+<p-sidebar [(visible)]="sidebarFilter" position="top" [baseZIndex]="10000" styleClass="p-height" [blockScroll]="true" [formGroup]="dataForm">
+    <h5>Filtros</h5>
+    <div class="grid">
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_project_types" [showEmptyMessage]="true" [suggestions]="filteredProjectTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterProjectType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Vendedor</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+
+                <p-calendar appendTo="body" formControlName="date" selectionMode="range" (onSelect)="search()"
+                            [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                <label>Fecha de Solicitud</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+
+                <p-calendar appendTo="body" formControlName="date" selectionMode="range" (onSelect)="search()"
+                            [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                <label>Fecha de Inicio Proyecto</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_electric_types" [showEmptyMessage]="true" [suggestions]="filteredProjectTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterProjectType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Tipo de Eléctrico</label>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_standard_types" [showEmptyMessage]="true" [suggestions]="filteredStandardTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterStandardType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Tipo Estandar</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+             <span class="p-float-label">
+                 <p-autoComplete formControlName="s_project_types" [showEmptyMessage]="true" [suggestions]="filteredProjectTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterProjectType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Tipo Proyecto</label>
+            </span>
+        </div>
+
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+
+                <p-calendar appendTo="body" formControlName="date" selectionMode="range" (onSelect)="search()"
+                            [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                <label>Fecha de Cotización</label>
+            </span>
+
+        </div>
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+
+                <p-calendar appendTo="body" formControlName="date" selectionMode="range" (onSelect)="search()"
+                            [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                <label>Fecha de Fin de Proyecto</label>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_energy_types" [showEmptyMessage]="true" [suggestions]="filteredEnergyTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterEnergyType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Tipo Energia</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+             <span class="p-float-label">
+                 <p-autoComplete formControlName="s_work_height_types" [showEmptyMessage]="true" [suggestions]="filteredWorkHeightTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterWorkHeightType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Trabajo en altura</label>
+            </span>
+        </div>
+
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_status" [showEmptyMessage]="true" [suggestions]="filteredProjectTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterProjectType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Estatus</label>
+            </span>
+        </div>
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+
+                <p-calendar appendTo="body" formControlName="date" selectionMode="range" (onSelect)="search()"
+                            [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                <label>Fecha de Orden de Compra</label>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_design_types" [showEmptyMessage]="true" [suggestions]="filteredDesignTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterDesignType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Tipo Diseño</label>
+            </span>
+        </div>
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+             <span class="p-float-label">
+                 <p-autoComplete formControlName="s_manufacture_types" [showEmptyMessage]="true" [suggestions]="filteredManufactureTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterManufactureType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Trabajo Manufactura</label>
+            </span>
+        </div>
+
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+            <span class="p-float-label">
+                 <p-autoComplete formControlName="s_hot_work_types" [showEmptyMessage]="true" [suggestions]="filteredHotWorkTypes"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterHotWorkType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Trabajo en Caliente</label>
+            </span>
+        </div>
+
+        <div class="flex align-items-center justify-content-center col-12 md:col-6 lg:col-3">
+             <span class="p-float-label">
+                 <p-autoComplete formControlName="s_loading_equipment_types" [showEmptyMessage]="true" [suggestions]="filteredLoadingEquipment"
+                                 [dropdown]="true" [multiple]="false" (onSelect)="search()"
+                                 (completeMethod)="filterLoadingEquipmentType($event)" field="name" [minLength]="1" appendTo="body">
+                  </p-autoComplete>
+                <label>Equipo de Carag</label>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="flex align-items-center justify-content-end col-12 md:col-12 lg:col-12 gap-1">
+            <p-button label="Descargar Reporte" type="button" styleClass="p-button p-button-rounded p-button-secondary"
+                      icon="pi pi-file-excel">
+
+            </p-button>
+
+            <p-button label="Filtrar Reporte" type="button" styleClass="p-button p-button-rounded p-button-info"
+                      icon="pi pi-filter-fill">
+
+            </p-button>
+        </div>
+
+    </div>
+
+</p-sidebar>
+
+<div class="grid" [formGroup]="dataForm">
+    <div class="col-12 md:col-6 lg:col-6">
+         <span class="p-float-label p-input-icon-left ml-auto">
+      <i class="pi pi-search"></i>
+      <input formControlName="search" pInputText type="text" />
+      <label>Buscar</label>
+    </span>
+    </div>
+    <div class="col-12 md:col-6 lg:col-6 flex md:justify-content-end lg:justify-content-end gap-1">
+        <button pButton pRipple type="button" icon="pi pi-filter-fill" class="p-button-rounded p-button-secondary" label="Filtrar y Exportar"
+                (click)="sidebarFilter = true">
+        </button>
+        <!--<button pButton pRipple type="button" icon="fa-solid fa-plus" class="p-button-rounded p-button-info" label="Nuevo"
+                (click)="addUpdate('add','',false)">
+        </button>-->
+
+        <button pButton pRipple type="button" icon="fa-solid fa-plus" class="p-button-rounded p-button-info" label="Nuevo"
+                [routerLink]="['crud/1']">
+        </button>
+    </div>
+</div>
+
+<div class="card-table" >
+    <p-table #dtProjectType [value]="dataItems" dataKey="id" sortMode="multiple" [rows]="10" [showCurrentPageReport]="true"
+             [loading]="loading" [paginator]="false" [globalFilterFields]="['name']">
+        <!--<ng-template pTemplate="caption">
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="flex">
+            <div fxFlex="50" class="p-fluid">
+                   <span class="p-input-icon-left ml-auto">
+                  <i class="pi pi-search"></i>
+                  <input pInputText type="text" (input)="getEventValue($event)" placeholder="Buscar zonas" />
+              </span>
+            </div>
+
+            <div fxFlex="50" fxLayoutAlign="end center" fxLayoutAlign.sm="center center" fxLayoutAlign.xs="center center">
+              <p-button type="button" icon="fa-solid fa-plus"
+                        styleClass="p-button-rounded" (click)="addUpdate('add-zone','', false)">
+              </p-button>
+            </div>
+
+          </div>
+        </ng-template>-->
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Requerimiento <p-sortIcon field="customer"></p-sortIcon></th>
+                <th pSortableColumn="name">Cliente <p-sortIcon field="plant"></p-sortIcon></th>
+                <th pSortableColumn="name">Vendedor <p-sortIcon field="plant"></p-sortIcon></th>
+                <th pSortableColumn="name">Fecha Cotización<p-sortIcon field="plant"></p-sortIcon></th>
+                <th pSortableColumn="name">Fecha P.O<p-sortIcon field="plant"></p-sortIcon></th>
+                <th>Inicio Proyecto</th>
+                <th>Estatus</th>
+            </tr>
+            <!-- <tr>
+               <th><p-columnFilter type="text" field="name"></p-columnFilter></th>
+               <th></th>
+             </tr>-->
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>
+                    <button pButton class="p-button-info p-button-text" type="button" label="{{item.folio}}"
+                            (click)="selected = item; menu.toggle($event)">
+                        <i class="pi pi-caret-down"></i>
+                    </button>
+                    <p-menu appendTo="body" #menu [popup]="true" [model]="itemsPanel"></p-menu>
+                </td>
+                <td>
+                    Cliente: {{item.customer}} <br>
+                    <!-- Planta: {{item.plant}} <br>
+                     Usuario en Planta: {{item.plant_user}} <br>
+                     Area: {{item.area}} <br>
+                     Referencia: {{item.customer_reference}}-->
+                </td>
+                <td> {{item.user?.name}}
+                    <!--Tipo de Proyecto: <span *ngFor="let item of item.project_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Diseño: <span *ngFor="let item of item.design_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Electrico: <span *ngFor="let item of item.electric_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Energía: <span *ngFor="let item of item.energy_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>-->
+                </td>
+                <td> {{item.quote_date | date: 'short' : 'GMT-5'}}
+                    <!--Manufactura: <span *ngFor="let item of item.manufacture_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Estandar: <span *ngFor="let item of item.standard_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Trabajo en altura: <span *ngFor="let item of item.work_height_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Trabajo en caliente: <span *ngFor="let item of item.hot_work_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>
+                    Equipo de Carga: <span *ngFor="let item of item.loading_equipment_types; last as isLast">
+                    {{item.name}} <span *ngIf="!isLast">,</span>
+                </span> <br>-->
+                </td>
+                <td>
+                    {{item.quote_date | date: 'short' : 'GMT-5'}}
+                </td>
+                <td>
+                    {{item.start_project_date | date: 'short' : 'GMT-5'}}
+                    <!--<i class="pi pi-plus"></i> {{item.created_at | date : 'short' : 'GMT-5'}} <br>
+                    <i class="pi pi-refresh color-icon-fa-blue"></i> {{item.updated_at | date : 'short' : 'GMT-5'}}-->
+                </td>
+                <td>
+                    <span class="status-blue">Programado</span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No se encontraron cotizaciones.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-paginator [first]="dataPaginate.first" [rows]="dataPaginate.rows" [rowsPerPageOptions]="[10,20,30,50]"
+                 [totalRecords]="dataPaginate.totalRecords" (onPageChange)="onPageChange($event)"
+                 currentPageReportTemplate="{currentPage} de {totalPages}" [showJumpToPageDropdown]="true"
+                 [showPageLinks]="true" [showJumpToPageInput]="true"></p-paginator>
+
+    <!-- <p-paginator [first]="dataPaginate.first" [rows]="dataPaginate.rows" [totalRecords]="dataPaginate.totalRecords"
+                  currentPageReportTemplate="{currentPage} de {totalPages}" [showPageLinks]="true"
+                  [showJumpToPageInput]="true" (onPageChange)="onPageChange($event)"></p-paginator>-->
+</div>
+

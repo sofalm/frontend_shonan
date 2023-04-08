@@ -1,0 +1,55 @@
+<ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="large"
+    color="#fff"
+    type="ball-scale-multiple"
+    [fullScreen]="false"
+>
+    <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
+<hr>
+
+<div class="grid p-fluid" [formGroup]="dataForm">
+    <div class="flex align-items-center justify-content-center col-12 md:col-12 lg:col-12">
+        <span class="p-input-icon-left p-float-label">
+            <i class="pi pi-pencil"></i>
+            <input pInputText type="text" formControlName="email"
+                   [ngClass]="{'ng-invalid ng-dirty': sharedService.fieldInvalidForm('email', dataForm) }">
+            <label>Correo</label>
+        </span>
+
+    </div>
+
+</div>
+
+<div class="grid p-fluid" [formGroup]="dataForm">
+    <div class="flex align-items-center justify-content-center col-12 md:col-12 lg:col-12">
+        <span class="p-input-icon-left p-float-label">
+            <i class="pi pi-pencil"></i>
+            <input pInputText type="text" formControlName="emailTwo"
+                   [ngClass]="{'ng-invalid ng-dirty': sharedService.fieldInvalidForm('emailTwo', dataForm) }">
+            <label>Correo</label>
+        </span>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="grid" [formGroup]="dataForm">
+    <div class="flex align-items-center justify-content-center col">
+        <p-button (click)="close()" label="Cancelar" type="button"
+                  styleClass="p-button p-button-rounded p-button-secondary">
+        </p-button>
+    </div>
+    <div class="flex align-items-center justify-content-center col">
+        <p-button (click)="save()"
+                  [disabled]="dataForm.invalid"
+                  label="Enviar" type="button" styleClass="p-button p-button-rounded">
+        </p-button>
+
+    </div>
+</div>
+
